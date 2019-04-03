@@ -11,6 +11,7 @@ var IDB = (alasql.engines.INDEXEDDB = function() {
 	'';
 });
 
+
 if (utils.hasIndexedDB) {
 	// For Chrome it work normally, for Firefox - simple shim
 	if (typeof utils.global.indexedDB.webkitGetDatabaseNames == 'function') {
@@ -412,6 +413,7 @@ IDB.intoTable = function(databaseid, tableid, value, columns, cb) {
 		tx.oncomplete = function() {
 			ixdb.close();
 			//			console.log('indexeddb',203,ilen);
+			alasql.setChangeCount(ilen);
 			if (cb) cb(ilen);
 		};
 	};
@@ -500,6 +502,7 @@ IDB.deleteFromTable = function(databaseid, tableid, wherefn, params, cb) {
 			} else {
 				//				console.log(555, res,idx,query);
 				ixdb.close();
+				alasql.setChangeCount(num);
 				if (cb) cb(num);
 			}
 		};
@@ -545,6 +548,7 @@ IDB.updateTable = function(databaseid, tableid, assignfn, wherefn, params, cb) {
 			} else {
 				//				console.log(555, res,idx,query);
 				ixdb.close();
+				alasql.setChangeCount(num);
 				if (cb) cb(num);
 			}
 		};

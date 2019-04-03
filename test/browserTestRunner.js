@@ -9,7 +9,8 @@
 	// Making HTML for the test
 	var template = fs.readFileSync(__dirname + '/browserTestRunner.tmlp.html', 'utf8');
 
-	var testFiles = walkFiles(__dirname, /test\d{3}\.js$/, null, true, true);
+	//var testFiles = walkFiles(__dirname, /test\d{3}\.js$/, null, true, true);
+	var testFiles = walkFiles(__dirname, /test155a\.js$/, null, true, true);
 
 	var testFilesHtml = '';
 

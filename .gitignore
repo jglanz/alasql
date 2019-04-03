@@ -1,4 +1,6 @@
 # Results of tests
+.idea
+*.iml
 test/res*
 node_modules/
 npm-debug.log

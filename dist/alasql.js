@@ -1,7 +1,7 @@
-//! AlaSQL v0.4.11-develop-af510181undefined | © 2014-2018 Andrey Gershun & Mathias Rangel Wulff | License: MIT
+//! AlaSQL v0.4.11-develop-977878caundefined | © 2014-2018 Andrey Gershun & Mathias Rangel Wulff | License: MIT
 /*
 @module alasql
-@version 0.4.11-develop-af510181undefined
+@version 0.4.11-develop-977878caundefined
 
 AlaSQL - JavaScript SQL database
 © 2014-2016	Andrey Gershun & Mathias Rangel Wulff
@@ -142,7 +142,7 @@ var alasql = function(sql, params, cb, scope) {
 	Current version of alasql 
  	@constant {string} 
 */
-alasql.version = '0.4.11-develop-af510181undefined';
+alasql.version = '0.4.11-develop-977878caundefined';
 
 /**
 	Debug flag
@@ -12127,6 +12127,15 @@ stdfn.NEWID = stdfn.UUID = stdfn.GEN_RANDOM_UUID = function() {
 	);
 };
 
+alasql.changeCount = 0;
+
+alasql.setChangeCount = function(changeCount) {
+	alasql.changeCount = changeCount;
+};
+
+stdfn.CHANGES = function() {
+	return alasql.changeCount;
+};
 /*
 //
 // CASE for Alasql.js
@@ -18533,6 +18542,7 @@ IDB.intoTable = function(databaseid, tableid, value, columns, cb) {
 		tx.oncomplete = function() {
 			ixdb.close();
 
+			alasql.setChangeCount(ilen);
 			if (cb) cb(ilen);
 		};
 	};
@@ -18610,6 +18620,7 @@ IDB.deleteFromTable = function(databaseid, tableid, wherefn, params, cb) {
 			} else {
 
 				ixdb.close();
+				alasql.setChangeCount(num);
 				if (cb) cb(num);
 			}
 		};
@@ -18654,6 +18665,7 @@ IDB.updateTable = function(databaseid, tableid, assignfn, wherefn, params, cb) {
 			} else {
 
 				ixdb.close();
+				alasql.setChangeCount(num);
 				if (cb) cb(num);
 			}
 		};

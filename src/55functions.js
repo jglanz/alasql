@@ -476,3 +476,13 @@ stdfn.NEWID = stdfn.UUID = stdfn.GEN_RANDOM_UUID = function() {
 		lut[(d3 >> 24) & 0xff]
 	);
 };
+
+alasql.changeCount = 0;
+
+alasql.setChangeCount = function(changeCount) {
+	alasql.changeCount = changeCount;
+};
+
+stdfn.CHANGES = function() {
+	return alasql.changeCount;
+};
