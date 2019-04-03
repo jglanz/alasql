@@ -7,7 +7,7 @@
     "Mathias Rangel Wulff <m@rawu.dk>"
   ],
   "main": "dist/alasql.fs.js",
-  "browser": "dist/alasql.min.js",
+  "browser": "dist/alasql.js",
   "directories": {
     "test": "test"
   },
