@@ -79,7 +79,7 @@ yy.Update.prototype.compile = function(databaseid) {
 			);
 		}
 
-		if (alasql.options.autocommit && db.engineid) {
+		if (alasql.options.autocommit && db.engineid && alasql.engines[db.engineid].loadTableData) {
 			alasql.engines[db.engineid].loadTableData(databaseid, tableid);
 		}
 
@@ -100,7 +100,7 @@ yy.Update.prototype.compile = function(databaseid) {
 			}
 		}
 
-		if (alasql.options.autocommit && db.engineid) {
+		if (alasql.options.autocommit && db.engineid && alasql.engines[db.engineid].saveTableData) {
 			alasql.engines[db.engineid].saveTableData(databaseid, tableid);
 		}
 
