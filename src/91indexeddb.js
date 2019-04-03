@@ -475,7 +475,7 @@ IDB.deleteFromTable = function(databaseid, tableid, wherefn, params, cb) {
 	request.onsuccess = function(event) {
 		var res = [];
 		var ixdb = event.target.result;
-		//		console.log(444,ixdb, tableid, ixdbid);
+		//console.log(444,ixdb, tableid, ixdbid);
 		var tx = ixdb.transaction([tableid], 'readwrite');
 		var store = tx.objectStore(tableid);
 		var cur = store.openCursor();

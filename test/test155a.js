@@ -35,13 +35,17 @@ if (typeof exports != 'object') {
               if (err) {
                 return done(err);
               }
-
               try {
                 assert.deepEqual(Object.values(res[0]), [5]);
-                done();
               } catch (err) {
                 done(err);
               }
+
+              alasql('delete from one',[],function (res,err) {
+                done(err);
+              });
+
+
 
             }
           );
