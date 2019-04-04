@@ -1,7 +1,7 @@
-//! AlaSQL v0.4.11-feature.select-changes-fn-dd7be168undefined | © 2014-2018 Andrey Gershun & Mathias Rangel Wulff | License: MIT
+//! AlaSQL v0.4.11-feature.select-changes-fn-668739ddundefined | © 2014-2018 Andrey Gershun & Mathias Rangel Wulff | License: MIT
 /*
 @module alasql
-@version 0.4.11-feature.select-changes-fn-dd7be168undefined
+@version 0.4.11-feature.select-changes-fn-668739ddundefined
 
 AlaSQL - JavaScript SQL database
 © 2014-2016	Andrey Gershun & Mathias Rangel Wulff

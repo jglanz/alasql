@@ -1,7 +1,7 @@
-//! AlaSQL v0.4.11-feature.select-changes-fn-dd7be168undefined | © 2014-2018 Andrey Gershun & Mathias Rangel Wulff | License: MIT
+//! AlaSQL v0.4.11-feature.select-changes-fn-668739ddundefined | © 2014-2018 Andrey Gershun & Mathias Rangel Wulff | License: MIT
 /*
 @module alasql
-@version 0.4.11-feature.select-changes-fn-dd7be168undefined
+@version 0.4.11-feature.select-changes-fn-668739ddundefined
 
 AlaSQL - JavaScript SQL database
 © 2014-2016	Andrey Gershun & Mathias Rangel Wulff
@@ -142,7 +142,7 @@ var alasql = function(sql, params, cb, scope) {
 	Current version of alasql 
  	@constant {string} 
 */
-alasql.version = '0.4.11-feature.select-changes-fn-dd7be168undefined';
+alasql.version = '0.4.11-feature.select-changes-fn-668739ddundefined';
 
 /**
 	Debug flag
@@ -14736,12 +14736,12 @@ yy.Insert.prototype.compile = function(databaseid) {
 
 	if (db.engineid && alasql.engines[db.engineid].intoTable && alasql.options.autocommit) {
 		var statement = function(params, cb) {
-			var aa = new Function('db,params', 'var y;' + s33 + 'return aa;')(db, params);
+			var aa = new Function('db,params', 'var y;' + s33 + 'return aa;').apply(this,[db, params]);
 
 			var res = alasql.engines[db.engineid].intoTable(db.databaseid, tableid, aa, null, cb);
 			//			if(cb) cb(res);
 			return res;
-		};
+		}.bind(this)
 	} else {
 		var statement = function(params, cb) {
 
@@ -18540,7 +18540,7 @@ IDB.dropTable = function(databaseid, tableid, ifexists, cb) {
 IDB.intoTable = function(databaseid, tableid, value, columns, cb) {
 
 	// console.trace();
-
+	console.log('intoTable',databaseid, tableid, value, cb);
 	var indexedDB = utils.global.indexedDB;
 	var ixdbid = alasql.databases[databaseid].ixdbid;
 	var request1 = indexedDB.open(ixdbid);
