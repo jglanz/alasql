@@ -17,12 +17,15 @@ if (typeof exports != 'object') {
         use test155a; \
         drop table if exists one; \
         CREATE TABLE one (a string);\
-        insert into one values (\'Moscow\'),(\'Paris\'),(\'Minsk\'),(\'Riga\'),(\'Tallinn\')').then(
+        CREATE TABLE two (a string);\
+        insert into one values (\'Moscow\'),(\'Paris\'),(\'Minsk\'),(\'Riga\'),(\'Tallinn\');\
+        insert into two values ((SELECT a from one LIMIT 1)); \
+        ').then(
         function (res) {
           console.log("test out", res);
 
           try {
-            assert.deepEqual(res, [1, 1, 1, 1, 0, 1,5]);
+            assert.deepEqual(res, [1, 1, 1, 1, 0, 1,1,5,1]);
           } catch (err) {
             done(err);
           }
@@ -36,7 +39,7 @@ if (typeof exports != 'object') {
                 return done(err);
               }
               try {
-                assert.deepEqual(Object.values(res[0]), [5]);
+                assert.deepEqual(Object.values(res[0]), [1]);
               } catch (err) {
                 done(err);
               }

@@ -396,7 +396,7 @@ IDB.dropTable = function(databaseid, tableid, ifexists, cb) {
 IDB.intoTable = function(databaseid, tableid, value, columns, cb) {
 	// console.log(arguments);
 	// console.trace();
-	//	console.log('intoTable',databaseid, tableid, value, cb);
+	console.log('intoTable',databaseid, tableid, value, cb);
 	var indexedDB = utils.global.indexedDB;
 	var ixdbid = alasql.databases[databaseid].ixdbid;
 	var request1 = indexedDB.open(ixdbid);
